@@ -1,0 +1,18 @@
+In PHP 8.2.0 have a new function mysqli_execute_query or mysqli::execute_query. It is a really nice feature. you can do following things with one function
+
+generate a prepared statement
+execute it by substituting values from the array of variables
+retrieve query result as associative array
+
+<?php
+$query = 'SELECT Title, Date FROM Book WHERE Title Like ? ORDER BY Title';
+
+/* here the magic */
+$result = $mysqli->execute_query($query, ['hobbit']);
+
+foreach ($result as $row) {
+    printf("Title: %s \n", $row["Title"]);
+    printf("Purchase Date: %s \n", $row["Date"]);
+     
+}
+?>
